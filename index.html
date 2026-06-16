@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colégio Crescer - Mais que uma escola, um projeto de vida!</title>
+    <meta name="description"
+        content="O Colégio Crescer em Taboão da Serra oferece Educação Infantil e Ensino Fundamental de qualidade, com diferenciais como Robótica, Inglês, Capoeira e Rádio Escolar. Matrículas Abertas!">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/favicon-96x96-1.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- TOP CONTACT BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <a href="tel:1147862244"><i class="fa-solid fa-phone"></i> (11) 4786-2244</a>
+                <a href="https://wa.me/5511947476625" target="_blank"><i class="fa-brands fa-whatsapp"></i> (11)
+                    94747-6625</a>
+                <a href="mailto:secretaria.crescer@outlook.com"><i class="fa-solid fa-envelope"></i>
+                    secretaria.crescer@outlook.com</a>
+            </div>
+            <div class="top-social">
+                <a href="https://www.facebook.com/colegiocresceroficial" target="_blank" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/colegiocrescertaboao" target="_blank" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@colegiocrescer" target="_blank" aria-label="YouTube"><i
+                        class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER & NAVIGATION -->
+    <header class="main-header" id="header">
+        <div class="container header-container">
+            <a href="#" class="logo-link">
+                <img src="assets/img/nova_logo.png" alt="Colégio Crescer Logo" class="logo-img">
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#sobre" class="nav-link">Nossa Escola</a></li>
+                    <li><a href="#proposta" class="nav-link">Proposta Pedagógica</a></li>
+                    <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+                    <li><a href="#webradio" class="nav-link">Web Rádio</a></li>
+                    <li><a href="#galeria" class="nav-link">Galeria</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://wa.me/5511947476625" target="_blank" class="btn btn-secondary nav-cta-btn">
+                    <span class="pulse-icon"></span> Matrículas Abertas
+                </a>
+                <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Menu de Navegação">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO SECTION -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg"
+            style="background-image: linear-gradient(135deg, rgba(43, 50, 115, 0.9) 0%, rgba(43, 50, 115, 0.7) 100%), url('assets/img/nova-img-9.jpg');">
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge hero-badge">Matrículas Abertas</span>
+                <h1 class="hero-title">Mais que uma escola, um <span>projeto de vida</span>!</h1>
+                <p class="hero-lead">Com mais de uma década de excelência educacional em Taboão da Serra, promovemos um
+                    ensino humanizado, focado na autonomia, ética e preparação completa para o futuro.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5511947476625" target="_blank" class="btn btn-primary btn-lg"><i
+                            class="fa-brands fa-whatsapp"></i> Agende uma Visita</a>
+                    <a href="#sobre" class="btn btn-outline btn-lg">Conheça Nossa Escola</a>
+                </div>
+            </div>
+
+            <div class="hero-video-card" id="videoPlayCard">
+                <div class="video-thumbnail"
+                    style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('assets/img/nova-img-10.jpg');">
+                    <button class="play-video-btn" id="playVideoBtn" aria-label="Assistir vídeo institucional">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+                <div class="video-card-info">
+                    <h3>Assista ao Vídeo Institucional</h3>
+                    <p>Conheça nossa infraestrutura e nossa proposta pedagógica em ação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEB RADIO & MUSIC PLAYER SECTION -->
+    <section class="radio-section" id="webradio">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Músicas & Rádio Online</span>
+                <h2 class="section-title">Web Rádio Crescer</h2>
+                <div class="header-line"></div>
+                <p class="section-lead">Ouça a nossa rádio escolar ao vivo ou aproveite nossa seleção de músicas
+                    diretamente da nossa playlist personalizada.</p>
+            </div>
+
+            <div class="player-container">
+                <!-- Modes / Tabs -->
+                <div class="player-tabs">
+                    <button class="player-tab" id="tabRadio"><i class="fa-solid fa-tower-broadcast"></i> Rádio Ao
+                        Vivo</button>
+                    <button class="player-tab active" id="tabPlaylist"><i class="fa-solid fa-music"></i> Playlist de
+                        Músicas</button>
+                </div>
+
+                <!-- Main Player Card -->
+                <div class="player-card">
+                    <div class="player-visualizer">
+                        <div class="vinyl-wrapper" id="vinylWrapper">
+                            <div class="vinyl-center"></div>
+                            <img src="assets/img/nova_logo.png" alt="Cover Art" class="player-cover-img"
+                                id="playerCover">
+                        </div>
+
+                        <!-- Dynamic Equalizer Animation -->
+                        <div class="equalizer" id="equalizer">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+
+                    <div class="player-info-controls">
+                        <!-- Stream status / Track Info -->
+                        <div class="track-details">
+                            <div class="badge-live-container">
+                                <span class="badge badge-red" id="liveBadge"><span class="live-dot"></span> NO AR</span>
+                                <span class="badge badge-blue" id="playlistBadge" style="display: none;"><i
+                                        class="fa-solid fa-list"></i> PLAYLIST</span>
+                            </div>
+                            <h3 class="track-title" id="trackTitle">Web Rádio Crescer</h3>
+                            <p class="track-artist" id="trackArtist">Sintonize no Futuro</p>
+                        </div>
+
+                        <!-- Progress slider (for Playlist mode) -->
+                        <div class="progress-container" id="progressContainer">
+                            <span class="time-display" id="currentTime">00:00</span>
+                            <div class="progress-bar-wrapper" id="progressBarWrapper">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+                            <span class="time-display" id="totalDuration">--:--</span>
+                        </div>
+
+                        <!-- Player Controls -->
+                        <div class="player-controls">
+                            <button class="control-btn" id="prevBtn" title="Anterior" style="display: none;"><i
+                                    class="fa-solid fa-backward-step"></i></button>
+                            <button class="control-btn play-btn" id="playBtn" title="Play"><i
+                                    class="fa-solid fa-play"></i></button>
+                            <button class="control-btn" id="nextBtn" title="Próxima" style="display: none;"><i
+                                    class="fa-solid fa-forward-step"></i></button>
+
+                            <!-- Volume slider -->
+                            <div class="volume-container">
+                                <button class="control-btn" id="muteBtn" title="Mudo"><i
+                                        class="fa-solid fa-volume-high"></i></button>
+                                <div class="volume-slider-wrapper" id="volumeSliderWrapper">
+                                    <div class="volume-slider" id="volumeSlider"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Playlist Drawer (Shows up when Playlist mode is selected) -->
+                <div class="playlist-drawer" id="playlistDrawer" style="display: none;">
+                    <div class="playlist-header">
+                        <h4>Sua Playlist Local <span class="song-count" id="songCount">(0 músicas)</span></h4>
+                        <div class="playlist-actions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                            <span class="playlist-instructions"><i class="fa-solid fa-circle-info"></i> Adicione novos arquivos .mp3 na pasta <code>musicas/</code></span>
+                            <label for="localFileSelector" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; margin: 0; cursor: pointer;">
+                                <i class="fa-solid fa-folder-open"></i> Carregar do PC
+                            </label>
+                            <input type="file" id="localFileSelector" accept="audio/mp3, audio/*" multiple style="display: none;">
+                        </div>
+                    </div>
+                    <ul class="playlist-songs" id="playlistSongs">
+                        <!-- Dynamically populated -->
+                        <li class="playlist-placeholder">Carregando músicas da pasta...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSA ESCOLA (ABOUT SECTION) -->
+    <section class="about-section" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text-content">
+                    <span class="section-subtitle">Nossa Escola</span>
+                    <h2 class="section-title">Compromisso com o futuro e a felicidade do seu filho</h2>
+                    <div class="header-line"></div>
+                    <p class="about-lead">No Colégio Crescer, acreditamos que a educação vai muito além dos livros
+                        didáticos. Desenvolvemos uma metodologia inovadora que integra conhecimentos acadêmicos e
+                        formação de competências para a vida.</p>
+
+                    <p>Nossa equipe pedagógica altamente capacitada promove um ambiente acolhedor, estimulante e seguro,
+                        garantindo que cada aluno se sinta valorizado e motivado a desenvolver suas habilidades
+                        individuais.</p>
+
+                    <div class="about-pillars">
+                        <div class="pillar-item">
+                            <div class="pillar-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <div class="pillar-info">
+                                <h3>Ensino Humanizado</h3>
+                                <p>Foco nas necessidades emocionais, éticas e intelectuais dos alunos.</p>
+                            </div>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-icon"><i class="fa-solid fa-school"></i></div>
+                            <div class="pillar-info">
+                                <h3>Infraestrutura Completa</h3>
+                                <p>Salas arejadas, laboratórios, espaço para atividades físicas e segurança total.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-image-content">
+                    <div class="about-image-wrapper">
+                        <img src="assets/img/nova-img-11.jpg" alt="Fachada do Colégio Crescer"
+                            class="about-img main-img">
+                        <div class="stats-badge">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Anos de Tradição</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEY NUMBERS STATS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>+3000</h3>
+                    <p>Alunos Formados</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>100%</h3>
+                    <p>Professores Especializados</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>100%</h3>
+                    <p>Material Pedagógico Premium</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-smile-beam"></i></div>
+                    <h3>98%</h3>
+                    <p>Satisfação das Famílias</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPOSTA PEDAGÓGICA (SEGMENTS & PARTNERS) -->
+    <section class="pedagogy-section" id="proposta">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Proposta Pedagógica</span>
+                <h2 class="section-title">Segmentos de Ensino</h2>
+                <div class="header-line"></div>
+                <p class="section-lead">Acompanhamos a jornada escolar do seu filho em duas das etapas mais cruciais de
+                    sua formação.</p>
+            </div>
+
+            <div class="segments-grid">
+                <!-- Segment Card 1 -->
+                <div class="segment-card">
+                    <div class="segment-icon-top"><i class="fa-solid fa-child-reaching"></i></div>
+                    <div class="segment-body">
+                        <h3>Educação Infantil</h3>
+                        <p class="segment-age">A partir de 2 anos</p>
+                        <p class="segment-desc">O brincar, a imaginação, o afeto e a descoberta do mundo. Atividades
+                            lúdicas focadas no desenvolvimento motor, cognitivo e social em um ambiente preparado
+                            exclusivamente para a infância.</p>
+                        <ul class="segment-bullets">
+                            <li><i class="fa-solid fa-circle-check"></i> Estimulação psicomotora</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Socialização e afeto</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Contação de histórias e artes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Segment Card 2 -->
+                <div class="segment-card">
+                    <div class="segment-icon-top"><i class="fa-solid fa-book-bookmark"></i></div>
+                    <div class="segment-body">
+                        <h3>Ensino Fundamental I & II</h3>
+                        <p class="segment-age">1º ao 9º Ano</p>
+                        <p class="segment-desc">Do letramento e raciocínio lógico básico ao aprofundamento das ciências,
+                            história, artes e tecnologia. Fortalecemos a autonomia e o espírito crítico dos estudantes.
+                        </p>
+                        <ul class="segment-bullets">
+                            <li><i class="fa-solid fa-circle-check"></i> Consolidação da leitura e escrita</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Metodologias ativas</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Preparo emocional e autonomia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PEDAGOGICAL PARTNER SHOWCASE -->
+            <div class="partner-showcase">
+                <div class="partner-grid">
+                    <div class="partner-logo-container">
+                        <!-- FTD Logo download fallback -->
+                        <div class="fallback-partner-logo">
+                            <img src="assets/img/661ce902-649d-45b3-b979-ef3e6ee5e8f3-removebg-preview.png"
+                                alt="FTD Educação" class="partner-logo">
+                        </div>
+                    </div>
+                    <div class="partner-text">
+                        <span class="partner-badge"><i class="fa-solid fa-handshake"></i> Parceria Pedagógica</span>
+                        <h3>Sistema de Ensino FTD Educação</h3>
+                        <p>Adotamos as soluções educacionais da FTD, uma das marcas mais respeitadas do país. Unimos
+                            materiais didáticos físicos de altíssima qualidade a recursos digitais inovadores,
+                            garantindo um aprendizado alinhado às diretrizes da BNCC (Base Nacional Comum Curricular) e
+                            focado em formar cidadãos reflexivos e proativos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS (PROJECTS) -->
+    <section class="features-section" id="diferenciais">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Diferenciais</span>
+                <h2 class="section-title">Nossos Projetos Especiais</h2>
+                <div class="header-line"></div>
+                <p class="section-lead">Atividades e disciplinas complementares que enriquecem o currículo e despertam
+                    novos talentos.</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Card 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>Robótica Educacional</h3>
+                    <p>Desenvolve o raciocínio lógico, a resolução de problemas complexos e a criatividade por meio da
+                        programação e montagem de projetos robóticos.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-language"></i></div>
+                    <h3>Inglês Integrado</h3>
+                    <p>Aulas interativas focadas na conversação, na fluência e no vocabulário prático, integradas ao
+                        cotidiano escolar para um bilinguismo natural.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-people-group"></i></div>
+                    <h3>Capoeira & Expressão</h3>
+                    <p>Promove a coordenação motora, a disciplina corporal, a musicalidade e a conexão profunda com
+                        aspectos históricos e culturais.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>Projeto de Vida e Empreendedorismo</h3>
+                    <p>Trabalha a educação financeira, planejamento pessoal, inteligência socioemocional e a atitude
+                        empreendedora para os desafios da vida real.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                    <h3>Rádio On-Line & Web Podcast</h3>
+                    <p>Os alunos participam ativamente da locução, roteirização e controle técnico, desenvolvendo
+                        habilidades de oratória, escrita e autonomia.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3>Ambiente Acolhedor</h3>
+                    <p>Segurança física e emocional com monitoramento integrado, pátio protegido e acompanhamento
+                        individualizado de cada aluno.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA (PHOTOS) -->
+    <section class="gallery-section" id="galeria">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Galeria de Fotos</span>
+                <h2 class="section-title">Nossa Infraestrutura & Atividades</h2>
+                <div class="header-line"></div>
+                <p class="section-lead">Veja de perto o espaço onde seu filho crescerá e aprenderá diariamente.</p>
+            </div>
+
+            <!-- Gallery Filter Buttons -->
+            <div class="gallery-filters">
+                <button class="gallery-filter-btn active" data-filter="all">Tudo</button>
+                <button class="gallery-filter-btn" data-filter="espaco">Espaços</button>
+                <button class="gallery-filter-btn" data-filter="atividade">Atividades</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Photo 1 -->
+                <div class="gallery-item" data-category="espaco">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-1.jpg" alt="Sala de Aula Crescer" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Salas Climatizadas</h4>
+                            <p>Espaço Moderno de Aprendizagem</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="gallery-item" data-category="atividade">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-2.jpg" alt="Atividades Didáticas" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Projetos Pedagógicos</h4>
+                            <p>Desenvolvimento Infantil</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="gallery-item" data-category="atividade">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-3.jpg" alt="Aulas Práticas" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Tecnologia & Robótica</h4>
+                            <p>Preparando para o Futuro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="gallery-item" data-category="espaco">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-4.jpg" alt="Área de Convivência" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Pátio e Lazer</h4>
+                            <p>Ambiente Seguro e Amplo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="gallery-item" data-category="atividade">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-5.jpg" alt="Atividades Criativas" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Arte e Expressão</h4>
+                            <p>Estímulo à Criatividade</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 6 -->
+                <div class="gallery-item" data-category="atividade">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-6.jpg" alt="Educação Física" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Esportes e Saúde</h4>
+                            <p>Coordenação e Movimento</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 7 -->
+                <div class="gallery-item" data-category="espaco">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-7.jpg" alt="Biblioteca Escolar" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Espaço de Leitura</h4>
+                            <p>Acervo Pedagógico Completo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 8 -->
+                <div class="gallery-item" data-category="atividade">
+                    <div class="gallery-img-wrapper">
+                        <img src="assets/img/nova-img-8.jpg" alt="Apresentações e Cultura" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            <h4>Eventos e Socialização</h4>
+                            <p>Integração com as Famílias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS (TESTIMONIALS) -->
+    <section class="testimonials-section" id="depoimentos">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Depoimentos</span>
+                <h2 class="section-title">O que dizem as Famílias</h2>
+                <div class="header-line"></div>
+                <p class="section-lead">A satisfação e o orgulho de quem confia seu bem mais precioso ao nosso colégio.
+                </p>
+            </div>
+
+            <!-- Google Ratings Widget -->
+            <div class="google-ratings">
+                <div class="google-badge-info">
+                    <i class="fa-brands fa-google google-icon"></i>
+                    <div>
+                        <h4>Avaliações Google</h4>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="rating-score">
+                    <span class="score-num">4.8</span>
+                    <span class="total-reviews">/5 (86 avaliações)</span>
+                </div>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Excelente colégio. Meu filho estuda lá desde o infantil e vejo a
+                        evolução dele a cada dia. Os professores são super dedicados e a direção é muito aberta ao
+                        diálogo."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="author-info">
+                            <h4>Mariana Silva</h4>
+                            <p>Mãe do Pedro (5º ano)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Um diferencial incrível do colégio é a Web Rádio e os projetos de
+                        Robótica. O meu filho mais novo adora ir para a escola e criar projetos. Recomendo muito!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="author-info">
+                            <h4>Roberto Ramos</h4>
+                            <p>Pai do Lucas (3º ano)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Acolhimento define essa escola. Na transição do Ensino Fundamental I
+                        para o II, minha filha recebeu todo o apoio necessário dos coordenadores. Ela é muito feliz
+                        estudando aqui."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="author-info">
+                            <h4>Aline Costa</h4>
+                            <p>Mãe da Giovanna (7º ano)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO (CONTACT & MAPS) -->
+    <section class="contact-section" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact info and map -->
+                <div class="contact-info-panel">
+                    <span class="section-subtitle text-light">Fale Conosco</span>
+                    <h2 class="section-title text-light">Canais de Atendimento</h2>
+                    <div class="header-line bg-secondary"></div>
+                    <p class="contact-intro">Estamos prontos para atender você e tirar todas as suas dúvidas sobre
+                        matrículas, horários e nossa grade de aulas.</p>
+
+                    <ul class="contact-details-list">
+                        <li>
+                            <span class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></span>
+                            <div class="contact-text-box">
+                                <h4>Endereço:</h4>
+                                <p>Estrada do Kizaemon Takeuti, 2872<br>Jd. Clementino - Taboão da Serra - SP</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon-box"><i class="fa-solid fa-phone"></i></span>
+                            <div class="contact-text-box">
+                                <h4>Telefone:</h4>
+                                <p>(11) 4786-2244</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon-box"><i class="fa-brands fa-whatsapp"></i></span>
+                            <div class="contact-text-box">
+                                <h4>WhatsApp Matrículas:</h4>
+                                <p>(11) 94747-6625</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="contact-icon-box"><i class="fa-solid fa-envelope"></i></span>
+                            <div class="contact-text-box">
+                                <h4>E-mail Secretaria:</h4>
+                                <p>secretaria.crescer@outlook.com</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Mini Map Embed -->
+                    <div class="map-embed">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.498064937213!2d-46.79155982466649!3d-23.658189878732155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5216e537d975%3A0xe9bf8c4854580bfb!2sEstr.%20do%20Kizaemon%20Takeuti%2C%202872%20-%20Parque%20Sao%20Joaquim%2C%20Tabo%C3%A3o%20da%20Serra%20-%20SP%2C%2006775-003!5e0!3m2!1spt-BR!2sbr!4v1718500000000!5m2!1spt-BR!2sbr"
+                            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" title="Localização do Colégio Crescer">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-panel">
+                    <h3>Agende uma visita ou faça uma pergunta</h3>
+                    <p>Preencha os campos abaixo e entraremos em contato rapidamente.</p>
+
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="formName">Nome Completo *</label>
+                            <input type="text" id="formName" required placeholder="Digite seu nome">
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="formEmail">E-mail *</label>
+                                <input type="email" id="formEmail" required placeholder="seuemail@exemplo.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="formPhone">Telefone/WhatsApp *</label>
+                                <input type="tel" id="formPhone" required placeholder="(11) 99999-9999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="formSegment">Segmento de Interesse *</label>
+                            <select id="formSegment" required>
+                                <option value="" disabled selected>Selecione um segmento</option>
+                                <option value="infantil">Educação Infantil</option>
+                                <option value="fundamental">Ensino Fundamental I & II</option>
+                                <option value="outro">Outro assunto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formMessage">Sua Mensagem *</label>
+                            <textarea id="formMessage" rows="5" required
+                                placeholder="Escreva sua dúvida ou solicitação de visita..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitFormBtn">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                    <div class="form-status" id="formStatus" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <img src="assets/img/nova_logo.png" alt="Colégio Crescer Logo" class="footer-logo">
+                <p class="footer-tagline">Formando cidadãos pensantes, autônomos e comprometidos com um amanhã melhor.
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/colegiocresceroficial" target="_blank" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/colegiocrescertaboao" target="_blank" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@colegiocrescer" target="_blank" aria-label="YouTube"><i
+                            class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links-col">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#sobre"><i class="fa-solid fa-chevron-right"></i> Nossa Escola</a></li>
+                    <li><a href="#proposta"><i class="fa-solid fa-chevron-right"></i> Proposta Pedagógica</a></li>
+                    <li><a href="#diferenciais"><i class="fa-solid fa-chevron-right"></i> Diferenciais</a></li>
+                    <li><a href="#webradio"><i class="fa-solid fa-chevron-right"></i> Web Rádio</a></li>
+                    <li><a href="#galeria"><i class="fa-solid fa-chevron-right"></i> Galeria</a></li>
+                    <li><a href="#contato"><i class="fa-solid fa-chevron-right"></i> Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col hours-col">
+                <h3>Horário de Funcionamento</h3>
+                <p class="hours-text"><i class="fa-solid fa-clock"></i> <strong>Secretaria:</strong> Segunda a Sexta:
+                    08:00 às 18:00</p>
+                <p class="hours-text"><i class="fa-solid fa-clock"></i> <strong>Aulas Manhã:</strong> 07:00 às 12:00</p>
+                <p class="hours-text"><i class="fa-solid fa-clock"></i> <strong>Aulas Tarde:</strong> 13:00 às 18:00</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 Colégio Crescer. Todos os direitos reservados.</p>
+                <p>Desenvolvido com carinho para Colégio Crescer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX / MODAL WINDOW FOR VIDEO & IMAGES -->
+    <div class="modal-overlay" id="modalOverlay" style="display: none;">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose" aria-label="Fechar">&times;</button>
+            <div class="modal-body-content" id="modalBodyContent">
+                <!-- Dynamically loaded media -->
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTopBtn" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript Bundle -->
+    <script src="index.js"></script>
+</body>
+
+</html>
