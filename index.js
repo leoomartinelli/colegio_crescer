@@ -183,31 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
-
     /* ==========================================================================
-       4. CUSTOM PLAYLIST AUDIO PLAYER
+       4. CUSTOM PLAYLIST AUDIO PLAYER (SIMULATED LIVE RADIO)
        ========================================================================== */
     
     // Player DOM elements
     const vinylWrapper = document.getElementById('vinylWrapper');
-    const playlistBadge = document.getElementById('playlistBadge');
-    const trackTitle = document.getElementById('trackTitle');
-    const trackArtist = document.getElementById('trackArtist');
-    const progressContainer = document.getElementById('progressContainer');
-    const progressBarWrapper = document.getElementById('progressBarWrapper');
-    const progressBar = document.getElementById('progressBar');
-    const currentTimeEl = document.getElementById('currentTime');
-    const totalDurationEl = document.getElementById('totalDuration');
-    const prevBtn = document.getElementById('prevBtn');
     const playBtn = document.getElementById('playBtn');
-    const nextBtn = document.getElementById('nextBtn');
     const muteBtn = document.getElementById('muteBtn');
     const volumeSliderWrapper = document.getElementById('volumeSliderWrapper');
     const volumeSlider = document.getElementById('volumeSlider');
-    const playlistDrawer = document.getElementById('playlistDrawer');
-    const playlistSongs = document.getElementById('playlistSongs');
-    const songCountEl = document.getElementById('songCount');
 
     // Audio instance
     const audio = new Audio();
@@ -219,127 +204,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load songs list from PHP
     loadSongs();
 
-    // Local file selector handler to load files directly (bypassing CORS for local development)
-    const localFileSelector = document.getElementById('localFileSelector');
-    if (localFileSelector) {
-        localFileSelector.addEventListener('change', (e) => {
-            const files = e.target.files;
-            if (files.length > 0) {
-                songsList = Array.from(files).map(file => {
-                    // Clean file name to use as title
-                    let title = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
-                    title = title.replace(/ytdown|ytmp3|youtube/gi, "").trim();
-                    title = title.charAt(0).toUpperCase() + title.slice(1);
-                    return {
-                        title: title || "Música Local",
-                        artist: "Upload Local",
-                        src: URL.createObjectURL(file)
-                    };
-                });
-                currentSongIndex = 0;
-                renderPlaylist();
-                loadSong(0);
-                playAudio();
-            }
-        });
-    }
-
     // Load songs from PHP server
     function loadSongs() {
         fetch('get_songs.php')
             .then(res => res.json())
             .then(data => {
                 songsList = data;
-                renderPlaylist();
                 if (songsList.length > 0) {
                     loadSong(currentSongIndex);
-                } else {
-                    trackTitle.textContent = "Nenhuma Música";
-                    trackArtist.textContent = "Adicione MP3s na pasta musicas/";
                 }
             })
             .catch(err => {
-                console.warn("Erro ao carregar via PHP (rodando localmente). Usando lista de músicas padrão:", err);
-                songsList = [
-                    {
-                        title: "Olha Bela",
-                        artist: "Lagum",
-                        src: "musicas/YTDown.com_YouTube_Lagum-Olha-Bela-Clipe-Oficial-faixa4_Media_B3amFvHXdGs_009_128k.mp3"
-                    },
-                    {
-                        title: "Eterno Agora",
-                        artist: "Lagum",
-                        src: "musicas/YTDown_YouTube_LAGUM-Eterno-Agora_Media_qHVkJ1Nloik_009_128k.mp3"
-                    },
-                    {
-                        title: "Partilhar",
-                        artist: "Rubel & ANAVITÓRIA",
-                        src: "musicas/YouTube_Rubel-_-ANAVITORIA-Partilhar-Audio_Media_hlAjJAlN7u0_009_128k.mp3"
-                    },
-                    {
-                        title: "Caderno",
-                        artist: "Toquinho",
-                        src: "musicas/Ytmp3.gg_YouTube_Caderno-Toquinho-letra-legendado_Media_-Gsu751X6ag_008_128k.mp3"
-                    },
-                    {
-                        title: "Cake By The Ocean",
-                        artist: "DNCE",
-                        src: "musicas/Ytmp3.gg_YouTube_DNCE-Cake-By-The-Ocean_Media_PAzH-YAlFYc_009_128k.mp3"
-                    }
-                ];
-                renderPlaylist();
-                if (songsList.length > 0) {
-                    loadSong(currentSongIndex);
-                }
+                console.warn("Erro ao carregar via PHP (rodando localmente):", err);
             });
-    }
-
-    // Render playlist HTML
-    function renderPlaylist() {
-        playlistSongs.innerHTML = '';
-        
-        if (songsList.length === 0) {
-            songCountEl.textContent = "(0 músicas)";
-            playlistSongs.innerHTML = `
-                <li class="playlist-placeholder">
-                    Nenhum arquivo .mp3 encontrado na pasta 'musicas/'. <br>
-                    Envie músicas para o servidor para tocar na playlist.
-                </li>
-            `;
-            return;
-        }
-
-        songCountEl.textContent = `(${songsList.length} ${songsList.length === 1 ? 'música' : 'músicas'})`;
-        
-        songsList.forEach((song, index) => {
-            const li = document.createElement('li');
-            li.dataset.index = index;
-            if (index === currentSongIndex) {
-                li.classList.add('active-song');
-            }
-            
-            li.innerHTML = `
-                <div class="song-info">
-                    <span class="song-item-title">${song.title}</span>
-                    <span class="song-item-artist">${song.artist}</span>
-                </div>
-                <div class="song-play-icon">
-                    <i class="fa-solid ${index === currentSongIndex && isPlaying ? 'fa-pause' : 'fa-play'}"></i>
-                </div>
-            `;
-            
-            li.addEventListener('click', () => {
-                if (currentSongIndex === index && isPlaying) {
-                    pauseAudio();
-                } else {
-                    currentSongIndex = index;
-                    loadSong(currentSongIndex);
-                    playAudio();
-                }
-            });
-            
-            playlistSongs.appendChild(li);
-        });
     }
 
     // Load a specific song from playlist
@@ -347,41 +224,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!songsList[index]) return;
         currentSongIndex = index;
         audio.src = songsList[index].src;
-        trackTitle.textContent = songsList[index].title;
-        trackArtist.textContent = songsList[index].artist;
-        
-        // Highlight active song in playlist
-        const listItems = playlistSongs.querySelectorAll('li');
-        listItems.forEach((li, idx) => {
-            if (idx === index) {
-                li.classList.add('active-song');
-                li.querySelector('.song-play-icon i').className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-            } else {
-                li.classList.remove('active-song');
-                li.querySelector('.song-play-icon i').className = 'fa-solid fa-play';
-            }
-        });
-        
-        // Reset progress
-        progressBar.style.width = '0%';
-        currentTimeEl.textContent = "00:00";
     }
 
     // Playback control functions
     function playAudio() {
+        if (songsList.length === 0) {
+            alert("Nenhum arquivo de áudio encontrado no sistema (pasta musicas/).");
+            return;
+        }
+        
         audio.play()
             .then(() => {
                 isPlaying = true;
                 playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
                 vinylWrapper.classList.add('playing');
                 vinylWrapper.style.animationPlayState = 'running';
-                
-                // Update playlist icons
-                updatePlaylistPlayIcons(true);
             })
             .catch(err => {
                 console.error("Falha ao tocar áudio:", err);
-                alert("Não foi possível reproduzir o áudio.");
+                alert("Não foi possível reproduzir a rádio no momento.");
             });
     }
 
@@ -389,18 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.pause();
         isPlaying = false;
         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        vinylWrapper.classList.remove('playing');
         vinylWrapper.style.animationPlayState = 'paused';
-        
-        updatePlaylistPlayIcons(false);
-    }
-
-    function updatePlaylistPlayIcons(isPlayingState) {
-        const listItems = playlistSongs.querySelectorAll('li');
-        listItems.forEach((li, idx) => {
-            if (idx === currentSongIndex) {
-                li.querySelector('.song-play-icon i').className = isPlayingState ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-            }
-        });
     }
 
     // Play/Pause button trigger
@@ -408,71 +259,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isPlaying) {
             pauseAudio();
         } else {
-            if (songsList.length > 0) {
-                playAudio();
-            }
-        }
-    });
-
-    // Skip controls
-    prevBtn.addEventListener('click', () => {
-        if (songsList.length === 0) return;
-        let prevIndex = currentSongIndex - 1;
-        if (prevIndex < 0) prevIndex = songsList.length - 1;
-        loadSong(prevIndex);
-        if (isPlaying) playAudio();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (songsList.length === 0) return;
-        let nextIndex = currentSongIndex + 1;
-        if (nextIndex >= songsList.length) nextIndex = 0;
-        loadSong(nextIndex);
-        if (isPlaying) playAudio();
-    });
-
-    // Handle end of song (auto-advance)
-    audio.addEventListener('ended', () => {
-        let nextIndex = currentSongIndex + 1;
-        if (nextIndex >= songsList.length) {
-            nextIndex = 0;
-            loadSong(nextIndex);
-            pauseAudio();
-        } else {
-            loadSong(nextIndex);
             playAudio();
         }
     });
 
-    // Audio time update (for progress slider)
-    audio.addEventListener('timeupdate', () => {
-        if (isNaN(audio.duration)) return;
-        
-        const current = audio.currentTime;
-        const duration = audio.duration;
-        const progressPercent = (current / duration) * 100;
-        
-        progressBar.style.width = `${progressPercent}%`;
-        currentTimeEl.textContent = formatTime(current);
-        totalDurationEl.textContent = formatTime(duration);
-    });
-
-    // Formatting MM:SS
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    }
-
-    // Click on progress bar to seek
-    progressBarWrapper.addEventListener('click', (e) => {
-        if (isNaN(audio.duration)) return;
-        
-        const wrapperWidth = progressBarWrapper.clientWidth;
-        const clickX = e.offsetX;
-        const duration = audio.duration;
-        
-        audio.currentTime = (clickX / wrapperWidth) * duration;
+    // Handle end of song (auto-advance sequentially to simulate continuous stream)
+    audio.addEventListener('ended', () => {
+        let nextIndex = currentSongIndex + 1;
+        if (nextIndex >= songsList.length) {
+            nextIndex = 0;
+        }
+        loadSong(nextIndex);
+        playAudio();
     });
 
     // Volume & Mute logic

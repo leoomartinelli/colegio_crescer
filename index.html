@@ -118,10 +118,10 @@
     <section class="radio-section" id="webradio">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Playlist de Músicas</span>
+                <span class="section-subtitle">Rádio Escolar Online</span>
                 <h2 class="section-title">Web Rádio Crescer</h2>
                 <div class="header-line"></div>
-                <p class="section-lead">Aproveite a nossa seleção de músicas e áudios diretamente da nossa playlist personalizada.</p>
+                <p class="section-lead">Ouça a nossa rádio online e acompanhe a programação e os áudios produzidos pelos nossos alunos.</p>
             </div>
 
             <div class="player-container">
@@ -151,30 +151,16 @@
                         <!-- Stream status / Track Info -->
                         <div class="track-details">
                             <div class="badge-live-container">
-                                <span class="badge badge-blue" id="playlistBadge"><i
-                                        class="fa-solid fa-list"></i> PLAYLIST</span>
+                                <span class="badge badge-red" id="liveBadge"><span class="live-dot"></span> NO AR</span>
                             </div>
-                            <h3 class="track-title" id="trackTitle">Carregando playlist...</h3>
-                            <p class="track-artist" id="trackArtist">Colégio Crescer</p>
-                        </div>
-
-                        <!-- Progress slider -->
-                        <div class="progress-container" id="progressContainer">
-                            <span class="time-display" id="currentTime">00:00</span>
-                            <div class="progress-bar-wrapper" id="progressBarWrapper">
-                                <div class="progress-bar" id="progressBar"></div>
-                            </div>
-                            <span class="time-display" id="totalDuration">--:--</span>
+                            <h3 class="track-title" id="trackTitle">Web Rádio Crescer</h3>
+                            <p class="track-artist" id="trackArtist">Sintonize no Futuro</p>
                         </div>
 
                         <!-- Player Controls -->
                         <div class="player-controls">
-                            <button class="control-btn" id="prevBtn" title="Anterior"><i
-                                    class="fa-solid fa-backward-step"></i></button>
                             <button class="control-btn play-btn" id="playBtn" title="Play"><i
                                     class="fa-solid fa-play"></i></button>
-                            <button class="control-btn" id="nextBtn" title="Próxima"><i
-                                    class="fa-solid fa-forward-step"></i></button>
 
                             <!-- Volume slider -->
                             <div class="volume-container">
@@ -186,24 +172,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Playlist Drawer -->
-                <div class="playlist-drawer" id="playlistDrawer">
-                    <div class="playlist-header">
-                        <h4>Sua Playlist Local <span class="song-count" id="songCount">(0 músicas)</span></h4>
-                        <div class="playlist-actions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                            <span class="playlist-instructions"><i class="fa-solid fa-circle-info"></i> Adicione novos arquivos .mp3 na pasta <code>musicas/</code></span>
-                            <label for="localFileSelector" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.75rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; margin: 0; cursor: pointer;">
-                                <i class="fa-solid fa-folder-open"></i> Carregar do PC
-                            </label>
-                            <input type="file" id="localFileSelector" accept="audio/mp3, audio/*" multiple style="display: none;">
-                        </div>
-                    </div>
-                    <ul class="playlist-songs" id="playlistSongs">
-                        <!-- Dynamically populated -->
-                        <li class="playlist-placeholder">Carregando músicas da pasta...</li>
-                    </ul>
                 </div>
             </div>
         </div>
