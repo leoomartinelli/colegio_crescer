@@ -190,9 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Player DOM elements
     const vinylWrapper = document.getElementById('vinylWrapper');
     const playBtn = document.getElementById('playBtn');
-    const muteBtn = document.getElementById('muteBtn');
-    const volumeSliderWrapper = document.getElementById('volumeSliderWrapper');
-    const volumeSlider = document.getElementById('volumeSlider');
 
     // Audio instance
     const audio = new Audio();
@@ -276,48 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
         playAudio();
     });
 
-    // Volume & Mute logic
-    let savedVolume = 0.8;
-    let isMuted = false;
-
-    muteBtn.addEventListener('click', () => {
-        if (isMuted) {
-            audio.volume = savedVolume;
-            volumeSlider.style.width = `${savedVolume * 100}%`;
-            muteBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-            isMuted = false;
-        } else {
-            savedVolume = audio.volume;
-            audio.volume = 0;
-            volumeSlider.style.width = '0%';
-            muteBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-            isMuted = true;
-        }
-    });
-
-    volumeSliderWrapper.addEventListener('click', (e) => {
-        const wrapperWidth = volumeSliderWrapper.clientWidth;
-        const clickX = e.offsetX;
-        let volume = clickX / wrapperWidth;
-        
-        // Bounds checking
-        if (volume < 0) volume = 0;
-        if (volume > 1) volume = 1;
-        
-        audio.volume = volume;
-        volumeSlider.style.width = `${volume * 100}%`;
-        isMuted = false;
-        
-        // Change volume icon dynamically
-        if (volume === 0) {
-            muteBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-            isMuted = true;
-        } else if (volume < 0.5) {
-            muteBtn.innerHTML = '<i class="fa-solid fa-volume-low"></i>';
-        } else {
-            muteBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-        }
-    });
 
 
     /* ==========================================================================
