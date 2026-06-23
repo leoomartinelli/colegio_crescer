@@ -1693,19 +1693,30 @@ img, video {
 @media (max-width: 768px) {
     .player-card {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
         justify-items: center;
         text-align: center;
+        padding: 24px 16px;
+    }
+    .player-info-controls {
+        width: 100%;
     }
     .track-details {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 20px;
+    }
+    .player-controls {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 16px;
     }
     .volume-container {
         margin-left: 0;
-        margin-top: 15px;
-        width: 100%;
+        margin-top: 0;
+        width: auto;
         justify-content: center;
     }
     
