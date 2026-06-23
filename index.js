@@ -210,9 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json())
             .then(data => {
                 songsList = data;
-                if (songsList.length > 0) {
-                    loadSong(currentSongIndex);
-                }
             })
             .catch(err => {
                 console.warn("Erro ao carregar via PHP (rodando localmente):", err);
@@ -224,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!songsList[index]) return;
         currentSongIndex = index;
         audio.src = songsList[index].src;
+        audio.load();
     }
 
     // Playback control functions
@@ -231,6 +229,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (songsList.length === 0) {
             alert("Nenhum arquivo de áudio encontrado no sistema (pasta musicas/).");
             return;
+        }
+        
+        // Ensure source is loaded within the click listener context (required by mobile browsers)
+        if (!audio.src || audio.src === '' || audio.src === window.location.href) {
+            loadSong(currentSongIndex);
         }
         
         audio.play()
