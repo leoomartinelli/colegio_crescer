@@ -186,15 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       4. CUSTOM WEBRADIO & PLAYLIST AUDIO PLAYER
+       4. CUSTOM PLAYLIST AUDIO PLAYER
        ========================================================================== */
-    const RADIO_STREAM_URL = "https://stm19.xcast.com.br:12814/;";
     
     // Player DOM elements
-    const tabRadio = document.getElementById('tabRadio');
-    const tabPlaylist = document.getElementById('tabPlaylist');
     const vinylWrapper = document.getElementById('vinylWrapper');
-    const liveBadge = document.getElementById('liveBadge');
     const playlistBadge = document.getElementById('playlistBadge');
     const trackTitle = document.getElementById('trackTitle');
     const trackArtist = document.getElementById('trackArtist');
@@ -217,15 +213,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const audio = new Audio();
     audio.volume = 0.8; // default volume
     let isPlaying = false;
-    let currentMode = 'playlist'; // 'radio' or 'playlist'
     let songsList = [];
     let currentSongIndex = 0;
 
     // Load songs list from PHP
     loadSongs();
-    
-    // Initialize default mode visually and structurally
-    setMode('playlist');
 
     // Local file selector handler to load files directly (bypassing CORS for local development)
     const localFileSelector = document.getElementById('localFileSelector');
@@ -246,74 +238,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 currentSongIndex = 0;
                 renderPlaylist();
-                setMode('playlist');
                 loadSong(0);
                 playAudio();
             }
         });
-    }
-
-    // Mode selection handlers
-    tabRadio.addEventListener('click', () => {
-        if (currentMode === 'radio') return;
-        setMode('radio');
-    });
-
-    tabPlaylist.addEventListener('click', () => {
-        if (currentMode === 'playlist') return;
-        setMode('playlist');
-    });
-
-    function setMode(mode) {
-        currentMode = mode;
-        stopAudio();
-        
-        if (mode === 'radio') {
-            tabRadio.classList.add('active');
-            tabPlaylist.classList.remove('active');
-            liveBadge.style.display = 'inline-flex';
-            playlistBadge.style.display = 'none';
-            playlistDrawer.style.display = 'none';
-            progressContainer.style.opacity = '0.3'; // fade out seek bar for live radio
-            progressBarWrapper.style.pointerEvents = 'none';
-            
-            // Show radio details
-            trackTitle.textContent = "Web Rádio Crescer";
-            trackArtist.textContent = "Sintonize no Futuro";
-            
-            // Hide navigation buttons
-            prevBtn.style.display = 'none';
-            nextBtn.style.display = 'none';
-            
-            // Reset durations
-            currentTimeEl.textContent = "00:00";
-            totalDurationEl.textContent = "--:--";
-            progressBar.style.width = '0%';
-            
-            // Set source back to stream
-            audio.src = RADIO_STREAM_URL;
-        } else {
-            tabRadio.classList.remove('active');
-            tabPlaylist.classList.add('active');
-            liveBadge.style.display = 'none';
-            playlistBadge.style.display = 'inline-flex';
-            playlistDrawer.style.display = 'block';
-            progressContainer.style.opacity = '1';
-            progressBarWrapper.style.pointerEvents = 'auto';
-            
-            // Show navigation buttons
-            prevBtn.style.display = 'inline-flex';
-            nextBtn.style.display = 'inline-flex';
-            
-            // Load selected song
-            if (songsList.length > 0) {
-                loadSong(currentSongIndex);
-            } else {
-                trackTitle.textContent = "Nenhuma Música";
-                trackArtist.textContent = "Adicione MP3s na pasta musicas/";
-                audio.src = "";
-            }
-        }
     }
 
     // Load songs from PHP server
@@ -323,8 +251,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 songsList = data;
                 renderPlaylist();
-                if (currentMode === 'playlist' && songsList.length > 0) {
+                if (songsList.length > 0) {
                     loadSong(currentSongIndex);
+                } else {
+                    trackTitle.textContent = "Nenhuma Música";
+                    trackArtist.textContent = "Adicione MP3s na pasta musicas/";
                 }
             })
             .catch(err => {
@@ -357,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ];
                 renderPlaylist();
-                if (currentMode === 'playlist' && songsList.length > 0) {
+                if (songsList.length > 0) {
                     loadSong(currentSongIndex);
                 }
             });
@@ -383,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         songsList.forEach((song, index) => {
             const li = document.createElement('li');
             li.dataset.index = index;
-            if (index === currentSongIndex && currentMode === 'playlist') {
+            if (index === currentSongIndex) {
                 li.classList.add('active-song');
             }
             
@@ -393,15 +324,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="song-item-artist">${song.artist}</span>
                 </div>
                 <div class="song-play-icon">
-                    <i class="fa-solid ${index === currentSongIndex && isPlaying && currentMode === 'playlist' ? 'fa-pause' : 'fa-play'}"></i>
+                    <i class="fa-solid ${index === currentSongIndex && isPlaying ? 'fa-pause' : 'fa-play'}"></i>
                 </div>
             `;
             
             li.addEventListener('click', () => {
-                if (currentMode !== 'playlist') {
-                    setMode('playlist');
-                }
-                
                 if (currentSongIndex === index && isPlaying) {
                     pauseAudio();
                 } else {
@@ -428,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listItems.forEach((li, idx) => {
             if (idx === index) {
                 li.classList.add('active-song');
-                li.querySelector('.song-play-icon i').className = 'fa-solid fa-pause';
+                li.querySelector('.song-play-icon i').className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
             } else {
                 li.classList.remove('active-song');
                 li.querySelector('.song-play-icon i').className = 'fa-solid fa-play';
@@ -442,11 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Playback control functions
     function playAudio() {
-        // Handle Shoutcast stream connection lag
-        if (currentMode === 'radio') {
-            audio.src = RADIO_STREAM_URL; // reload stream URL to avoid playing cached buffer
-        }
-        
         audio.play()
             .then(() => {
                 isPlaying = true;
@@ -454,44 +376,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 vinylWrapper.classList.add('playing');
                 vinylWrapper.style.animationPlayState = 'running';
                 
-                // Update playlist icons if in playlist mode
-                if (currentMode === 'playlist') {
-                    updatePlaylistPlayIcons(true);
-                }
+                // Update playlist icons
+                updatePlaylistPlayIcons(true);
             })
             .catch(err => {
                 console.error("Falha ao tocar áudio:", err);
-                alert("Não foi possível conectar ao fluxo de áudio no momento.");
+                alert("Não foi possível reproduzir o áudio.");
             });
     }
 
     function pauseAudio() {
         audio.pause();
-        
-        // If it's a live radio, we empty the src to stop downloading stream in background
-        if (currentMode === 'radio') {
-            audio.src = ''; 
-        }
-        
         isPlaying = false;
         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         vinylWrapper.style.animationPlayState = 'paused';
         
-        if (currentMode === 'playlist') {
-            updatePlaylistPlayIcons(false);
-        }
-    }
-
-    function stopAudio() {
-        pauseAudio();
-        audio.src = '';
+        updatePlaylistPlayIcons(false);
     }
 
     function updatePlaylistPlayIcons(isPlayingState) {
         const listItems = playlistSongs.querySelectorAll('li');
         listItems.forEach((li, idx) => {
             if (idx === currentSongIndex) {
-                li.querySelector('.song-play-icon i').className = isPlayingState ? 'fa-solid fa-pause' : 'fa-play';
+                li.querySelector('.song-play-icon i').className = isPlayingState ? 'fa-solid fa-pause' : 'fa-solid fa-play';
             }
         });
     }
@@ -501,7 +408,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isPlaying) {
             pauseAudio();
         } else {
-            playAudio();
+            if (songsList.length > 0) {
+                playAudio();
+            }
         }
     });
 
@@ -522,25 +431,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isPlaying) playAudio();
     });
 
-    // Handle end of song (auto-advance in playlist mode)
+    // Handle end of song (auto-advance)
     audio.addEventListener('ended', () => {
-        if (currentMode === 'playlist') {
-            let nextIndex = currentSongIndex + 1;
-            if (nextIndex >= songsList.length) {
-                // finished playlist, stop playing or loop
-                nextIndex = 0;
-                loadSong(nextIndex);
-                pauseAudio();
-            } else {
-                loadSong(nextIndex);
-                playAudio();
-            }
+        let nextIndex = currentSongIndex + 1;
+        if (nextIndex >= songsList.length) {
+            nextIndex = 0;
+            loadSong(nextIndex);
+            pauseAudio();
+        } else {
+            loadSong(nextIndex);
+            playAudio();
         }
     });
 
     // Audio time update (for progress slider)
     audio.addEventListener('timeupdate', () => {
-        if (currentMode !== 'playlist' || isNaN(audio.duration)) return;
+        if (isNaN(audio.duration)) return;
         
         const current = audio.currentTime;
         const duration = audio.duration;
@@ -560,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Click on progress bar to seek
     progressBarWrapper.addEventListener('click', (e) => {
-        if (currentMode !== 'playlist' || isNaN(audio.duration)) return;
+        if (isNaN(audio.duration)) return;
         
         const wrapperWidth = progressBarWrapper.clientWidth;
         const clickX = e.offsetX;

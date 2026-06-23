@@ -118,22 +118,13 @@
     <section class="radio-section" id="webradio">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">Músicas & Rádio Online</span>
+                <span class="section-subtitle">Playlist de Músicas</span>
                 <h2 class="section-title">Web Rádio Crescer</h2>
                 <div class="header-line"></div>
-                <p class="section-lead">Ouça a nossa rádio escolar ao vivo ou aproveite nossa seleção de músicas
-                    diretamente da nossa playlist personalizada.</p>
+                <p class="section-lead">Aproveite a nossa seleção de músicas e áudios diretamente da nossa playlist personalizada.</p>
             </div>
 
             <div class="player-container">
-                <!-- Modes / Tabs -->
-                <div class="player-tabs">
-                    <button class="player-tab" id="tabRadio"><i class="fa-solid fa-tower-broadcast"></i> Rádio Ao
-                        Vivo</button>
-                    <button class="player-tab active" id="tabPlaylist"><i class="fa-solid fa-music"></i> Playlist de
-                        Músicas</button>
-                </div>
-
                 <!-- Main Player Card -->
                 <div class="player-card">
                     <div class="player-visualizer">
@@ -160,15 +151,14 @@
                         <!-- Stream status / Track Info -->
                         <div class="track-details">
                             <div class="badge-live-container">
-                                <span class="badge badge-red" id="liveBadge"><span class="live-dot"></span> NO AR</span>
-                                <span class="badge badge-blue" id="playlistBadge" style="display: none;"><i
+                                <span class="badge badge-blue" id="playlistBadge"><i
                                         class="fa-solid fa-list"></i> PLAYLIST</span>
                             </div>
-                            <h3 class="track-title" id="trackTitle">Web Rádio Crescer</h3>
-                            <p class="track-artist" id="trackArtist">Sintonize no Futuro</p>
+                            <h3 class="track-title" id="trackTitle">Carregando playlist...</h3>
+                            <p class="track-artist" id="trackArtist">Colégio Crescer</p>
                         </div>
 
-                        <!-- Progress slider (for Playlist mode) -->
+                        <!-- Progress slider -->
                         <div class="progress-container" id="progressContainer">
                             <span class="time-display" id="currentTime">00:00</span>
                             <div class="progress-bar-wrapper" id="progressBarWrapper">
@@ -179,11 +169,11 @@
 
                         <!-- Player Controls -->
                         <div class="player-controls">
-                            <button class="control-btn" id="prevBtn" title="Anterior" style="display: none;"><i
+                            <button class="control-btn" id="prevBtn" title="Anterior"><i
                                     class="fa-solid fa-backward-step"></i></button>
                             <button class="control-btn play-btn" id="playBtn" title="Play"><i
                                     class="fa-solid fa-play"></i></button>
-                            <button class="control-btn" id="nextBtn" title="Próxima" style="display: none;"><i
+                            <button class="control-btn" id="nextBtn" title="Próxima"><i
                                     class="fa-solid fa-forward-step"></i></button>
 
                             <!-- Volume slider -->
@@ -198,8 +188,8 @@
                     </div>
                 </div>
 
-                <!-- Playlist Drawer (Shows up when Playlist mode is selected) -->
-                <div class="playlist-drawer" id="playlistDrawer" style="display: none;">
+                <!-- Playlist Drawer -->
+                <div class="playlist-drawer" id="playlistDrawer">
                     <div class="playlist-header">
                         <h4>Sua Playlist Local <span class="song-count" id="songCount">(0 músicas)</span></h4>
                         <div class="playlist-actions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
